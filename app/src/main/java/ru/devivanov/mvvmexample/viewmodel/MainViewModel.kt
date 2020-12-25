@@ -6,9 +6,12 @@ import ru.devivanov.mvpexample.data.BaseDataBase
 class MainViewModel(val dataBase: BaseDataBase) {
     //Создаем обозреваемый объект, когда в нем будут изменения, все подсписчики будут уведомлены
     val lifeData = MutableLiveData<List<String>>()
+    val liveNums = MutableLiveData<Int>()
     //Забираем из базы данных список
     fun getDB() {
-        lifeData.postValue(dataBase.returnBase())
+        val list = dataBase.returnBase()
+        lifeData.postValue(list)
+        liveNums.postValue(list.size)
     }
     //Добавляем в бд элемент
     fun putToDB(string: String) {

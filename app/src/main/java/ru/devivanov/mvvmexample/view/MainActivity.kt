@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
             }
             text_view.text = string
         }
+        mainViewModel.liveNums.observe(this) {
+            text_nums.text = it.toString()
+        }
         //Этой кнойпкой будем забирать из базы списко
         button_get.setOnClickListener {
             mainViewModel.getDB()
