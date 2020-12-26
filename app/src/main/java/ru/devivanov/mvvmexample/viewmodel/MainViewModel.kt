@@ -2,8 +2,9 @@ package ru.devivanov.mvvmexample.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import ru.devivanov.mvpexample.data.BaseDataBase
+import javax.inject.Inject
 
-class MainViewModel(val dataBase: BaseDataBase) {
+class MainViewModel (private val dataBase: BaseDataBase) {
     //Создаем обозреваемый объект, когда в нем будут изменения, все подсписчики будут уведомлены
     val lifeData = MutableLiveData<List<String>>()
     val liveNums = MutableLiveData<Int>()

@@ -2,14 +2,18 @@ package ru.devivanov.mvvmexample.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.devivanov.mvvmexample.App
 import ru.devivanov.mvvmexample.R
 import ru.devivanov.mvvmexample.viewmodel.MainViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     //В этой переменной будет хранится ссылка на экземпляр нашей ViewModel из класса App
-    private val mainViewModel = App.instance.mainViewModel
+    @Inject lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
